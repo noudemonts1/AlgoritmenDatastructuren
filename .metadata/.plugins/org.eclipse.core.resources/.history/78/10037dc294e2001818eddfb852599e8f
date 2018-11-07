@@ -1,0 +1,21 @@
+package algoritmen.datastructuren.noudfulco.assignment1;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class Graph {
+	private int numVertices;
+	private LinkedList<Box> adjListArray [];
+	
+	public Graph(Box[] boxes) {
+		adjListArray = new LinkedList[boxes.length+1];
+		adjListArray[0] = new LinkedList<>();
+		for (int i = 0; i < boxes.length; i++) {
+			adjListArray[0].add(boxes[i]);
+		}
+		for (int i = 0; i < boxes.length; i++) {
+			
+		}
+	}
+}
+

@@ -1,0 +1,33 @@
+package algoritmen.datastructuren.noudfulco.assignment1;
+
+import java.util.Arrays;
+import java.lang.*;
+
+public class Box implements Comparable<Box>{
+	
+	private float[] dimensions;
+	
+	public Box(){}
+	
+	public Box(float[] dimensions) {
+		this.dimensions = dimensions;
+		Arrays.sort(dimensions);
+	}
+	
+	public float getFirst() {
+		return dimensions[0];
+	}
+	
+	@Override
+	public String toString() {
+		return dimensions[0] + " " + dimensions[1] + " " + dimensions[2] + "\n" ;
+	}
+
+	@Override
+	public int compareTo(Box o) {
+		return compareTo(dimensions[0], o.getFirst());
+	}
+
+
+	
+}

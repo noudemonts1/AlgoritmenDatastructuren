@@ -1,0 +1,6 @@
+package algoritmen.datastructuren.noudfulco.assignment1;
+
+public class Graph {
+	private int numVertices;
+	private LinkedList<> adjList[];
+}

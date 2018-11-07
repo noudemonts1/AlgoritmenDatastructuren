@@ -1,0 +1,12 @@
+package algoritmen.datastructuren.noudfulco.assignment1;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Box[] boxes = Reader.readFile();
+		for(Box b : boxes) {
+			System.out.println(b);
+		}
+	}
+
+}
