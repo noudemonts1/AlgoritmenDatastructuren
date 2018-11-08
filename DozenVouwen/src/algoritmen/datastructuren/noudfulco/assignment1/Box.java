@@ -7,7 +7,7 @@ import java.lang.*;
 public class Box implements Comparable<Box>{
 
 	private float[] dimensions;
-	private double distance;
+	private float distance;
 	private Box predecessor;
 
 	public Box(){
@@ -18,7 +18,7 @@ public class Box implements Comparable<Box>{
 	public Box(float[] dimensions) {
 		this.dimensions = dimensions;
 		Arrays.sort(dimensions);
-		distance = Double.POSITIVE_INFINITY;
+		distance = Float.POSITIVE_INFINITY;
 	}
 
 	public float[] getDimensions() {
@@ -32,6 +32,18 @@ public class Box implements Comparable<Box>{
 				return false;
 		}
 		return true;
+	}
+	
+	public float getDistance() {
+		return distance;
+	}
+	
+	public void setDistance(float distance) {
+		this.distance = distance;
+	}
+	
+	public void setPredecessor(Box box) {
+		this.predecessor = box;
 	}
 
 	@Override

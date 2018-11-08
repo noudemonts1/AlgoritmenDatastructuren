@@ -10,6 +10,8 @@ public class Main {
 		Arrays.sort(boxes);
 		Graph graph = new Graph(boxes);
 		graph.printGraph();
+		graph.dagShortestPaths();
+		System.out.println(graph.findShortestDist());
 		long endTime = System.currentTimeMillis();
 		System.out.println("Running time = " + (endTime-startTime) + " ms");
 	}
