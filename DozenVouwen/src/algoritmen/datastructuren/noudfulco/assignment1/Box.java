@@ -7,18 +7,24 @@ import java.lang.*;
 public class Box implements Comparable<Box>{
 
 	private float[] dimensions;
+	private boolean isSource;
 	private float distance;
 	private Box predecessor;
+	private boolean isNested;
 
 	public Box(){
 		dimensions = new float[]{0,0,0};
 		distance = 0;
+		isSource = true;
+		isNested = false;
 	}
 
 	public Box(float[] dimensions) {
 		this.dimensions = dimensions;
 		Arrays.sort(dimensions);
 		distance = Float.POSITIVE_INFINITY;
+		isSource = false;
+		isNested = false;
 	}
 
 	public float[] getDimensions() {
@@ -48,7 +54,7 @@ public class Box implements Comparable<Box>{
 
 	@Override
 	public String toString() {
-		return dimensions[0] + " " + dimensions[1] + " " + dimensions[2] + "\n" ;
+		return dimensions[0] + " " + dimensions[1] + " " + dimensions[2] ;
 	}
 
 	@Override
@@ -56,5 +62,23 @@ public class Box implements Comparable<Box>{
 		Float boxA = dimensions[0];
 		Float boxB = other.getDimensions()[0];
 		return boxA.compareTo(boxB);
+	}
+
+	public boolean getIsSource() {
+		return isSource;
+	}
+
+	public Box getPredecessor() {
+		return predecessor;
+	}
+
+	public void setNested() {
+		isNested = true;
+		if (isSource)
+			System.out.println("Source set to nested");
+	}
+
+	public boolean getNested() {
+		return isNested;
 	}
 }
