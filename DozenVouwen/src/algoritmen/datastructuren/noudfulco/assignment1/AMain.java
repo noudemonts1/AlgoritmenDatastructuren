@@ -28,7 +28,7 @@ public class AMain {
 				count++;
 				graph.createGraph();
 				graph.dagShortestPaths();
-				graph.removeBoxes(graph.findShortestDist());
+				graph.removeBoxes(graph.getBestBox());
 			}
 	        
 	        // Print your solution.

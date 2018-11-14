@@ -8,6 +8,8 @@ public class Graph {
 	private LinkedList<Box> adjListArray[];
 	private Box[] boxes;
 	private int nestedBoxes;
+	private Box bestBox;
+	private float curDist;
 
 	public Graph(Box[] boxes) {
 		this.boxes = boxes;
@@ -15,6 +17,7 @@ public class Graph {
 	}
 
 	public void createGraph() {
+		curDist = Float.POSITIVE_INFINITY;
 		int listSize = boxes.length - nestedBoxes + 1;
 		adjListArray = new LinkedList[listSize];
 		adjListArray[0] = new LinkedList<>();
@@ -70,26 +73,27 @@ public class Graph {
 		}
 	}
 
-	public Box findShortestDist() {
-		float distance = Float.POSITIVE_INFINITY;
-		Box box = adjListArray[0].get(0);
-		for (int i = 1; i < adjListArray.length; i++) {
-			if (adjListArray[i].get(0).getDistance() < distance) {
-				distance = adjListArray[i].get(0).getDistance();
-				box = adjListArray[i].get(0);
-			}
-		}
-		return box;
-	}
+//	public Box findShortestDist() {
+//		float distance = Float.POSITIVE_INFINITY;
+//		Box box = adjListArray[0].get(0);
+//		for (int i = 1; i < adjListArray.length; i++) {
+//			if (adjListArray[i].get(0).getDistance() < distance) {
+//				distance = adjListArray[i].get(0).getDistance();
+//				box = adjListArray[i].get(0);
+//			}
+//		}
+//		return box;
+//	}
 
 	public void relax(Box boxA, Box boxB) {
-		float weight = -1;
-		if (boxA.getIsSource() || boxB.getIsSource()) {
-			weight = 0;
-		}
-		if (boxB.getDistance() > boxA.getDistance() + weight) {
-			boxB.setDistance(boxA.getDistance() + weight);
+		float newDist = boxA.getDistance() - 1;
+		if (boxB.getDistance() > newDist) {
+			boxB.setDistance(newDist);
 			boxB.setPredecessor(boxA);
+			if (newDist < curDist) {
+				curDist = newDist;
+				bestBox = boxB;
+			}
 		}
 	}
 
@@ -105,6 +109,10 @@ public class Graph {
 	
 	public int getNestedBoxes() {
 		return nestedBoxes;
+	}
+	
+	public Box getBestBox() {
+		return bestBox;
 	}
 
 //	public void printSizes() {
